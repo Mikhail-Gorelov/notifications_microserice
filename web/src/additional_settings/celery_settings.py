@@ -25,10 +25,20 @@ CELERY_BROKER_TRANSPORT_OPTIONS = {
     'interval_max': 3,
 }
 
-celery_exchange = Exchange('celery', type='direct')  # topic, fanout
+# CELERY_TASK_DEFAULT_EXCHANGE = "celery"
 
-CELERY_TASK_ROUTES = {
-    '*': {'queue': 'celery'},
+# CELERY_TASK_QUEUES = {
+#     Queue('emails', exchange='emails')
+# }
+
+CELERY_TASK_DEFAULT_EXCHANGE = "celery"
+
+CELERY_TASK_QUEUES = {
+    "emails": {
+        "binding_key": "emails",
+    }
 }
 
-CELERY_TASK_QUEUES = (Queue('celery', exchange=celery_exchange, queue_arguments={'x-queue-mode': 'lazy'}),)
+CELERY_TASK_ROUTES = {
+    'email_sender.tasks.*': {'queue': 'emails'},
+}

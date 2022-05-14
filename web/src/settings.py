@@ -1,5 +1,4 @@
 import os
-
 from django.utils.translation import gettext_lazy as _
 
 from .additional_settings.cacheops_settings import *
@@ -7,6 +6,7 @@ from .additional_settings.celery_settings import *
 from .additional_settings.defender_settings import *
 from .additional_settings.logging_settings import *
 from .additional_settings.swagger_settings import *
+from .additional_settings.smtp_settings import *
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -64,6 +64,7 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'main.apps.MainConfig',
+    'email_notifications.apps.EmailNotificationsConfig'
 ]
 
 INSTALLED_APPS += THIRD_PARTY_APPS + LOCAL_APPS

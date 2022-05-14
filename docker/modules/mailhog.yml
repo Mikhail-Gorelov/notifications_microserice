@@ -3,12 +3,6 @@
 version: '3.7'
 
 services:
-  celery:
-    env_file:
-      - docker/dev/env/.mailhog.env
-  web:
-    env_file:
-      - docker/dev/env/.mailhog.env
   mailhog:
     image: mailhog/mailhog
     ports:
@@ -17,8 +11,6 @@ services:
     restart: unless-stopped
     volumes:
       - mailbox_data:/maildir
-    networks:
-      - separated_network
 
 
 volumes:
