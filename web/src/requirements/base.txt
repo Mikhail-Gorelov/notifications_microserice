@@ -44,3 +44,9 @@ django-microservice-request==0.5.1
 
 # JsonValidator
 jsonschema==4.4.0
+
+# WebSockets
+channels==3.0.4
+channels-redis==3.3.0
+cryptography==36.0
+Twisted[tls,http2]==21.7.0

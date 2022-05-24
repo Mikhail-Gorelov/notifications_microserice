@@ -89,6 +89,15 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
 }
 
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [REDIS_URL + '/1'],
+        },
+    },
+}
+
 if ENABLE_RENDERING:
     """For build CMS using DRF"""
     REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = (
@@ -185,7 +194,6 @@ CSRF_COOKIE_NAME = 'csrftoken'
 
 if DEBUG:
     ROSETTA_SHOW_AT_ADMIN_PANEL = True
-
 
 if JAEGER_AGENT_HOST := os.environ.get('JAEGER_AGENT_HOST'):
     from django_opentracing import DjangoTracing
