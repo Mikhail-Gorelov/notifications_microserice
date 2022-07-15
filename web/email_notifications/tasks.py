@@ -39,8 +39,8 @@ def send_information_email(
         'template_name': 'auth_app/success_registration.html',
         "to_email": to_email,
         "context": {
-            "activate_url": context['activate_url'],
-            "full_name": context['full_name']
+            "activate_url": context.get('activate_url'),
+            "full_name": context.get('full_name')
         }
     }
     async_to_sync(channel_layer.group_send)(

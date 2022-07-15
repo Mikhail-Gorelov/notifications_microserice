@@ -1,3 +1,5 @@
+docker/dev/env/.email.env
+docker/prod/env/.email.env
 node_modules
 web/static/
 Pip*
