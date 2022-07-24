@@ -8,6 +8,10 @@ from .additional_settings.logging_settings import *
 from .additional_settings.swagger_settings import *
 from .additional_settings.smtp_settings import *
 
+TWILIO_ACCOUNT_SID = os.environ.get('TWILIO_ACCOUNT_SID', '')
+TWILIO_AUTH_TOKEN = os.environ.get('TWILIO_AUTH_TOKEN', '')
+TWILIO_PHONE_NUMBER = os.environ.get('TWILIO_PHONE_NUMBER', '')
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'L7HTf4$@jQXj1sRSrOqVokthx1vgd1Zdq7H&PeHPLKXD')
@@ -65,7 +69,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'main.apps.MainConfig',
-    'email_notifications.apps.EmailNotificationsConfig'
+    'email_notifications.apps.EmailNotificationsConfig',
+    'phone_notifications.apps.PhoneNotificationsConfig'
 ]
 
 INSTALLED_APPS += THIRD_PARTY_APPS + LOCAL_APPS

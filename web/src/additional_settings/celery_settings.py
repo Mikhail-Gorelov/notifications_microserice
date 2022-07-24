@@ -36,9 +36,13 @@ CELERY_TASK_DEFAULT_EXCHANGE = "celery"
 CELERY_TASK_QUEUES = {
     "emails": {
         "binding_key": "emails",
-    }
+    },
+    "sms": {
+        "binding_key": "sms",
+    },
 }
 
 CELERY_TASK_ROUTES = {
     'email_sender.tasks.*': {'queue': 'emails'},
+    'sms_sender.tasks.*': {'queue': 'sms'},
 }

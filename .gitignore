@@ -1,5 +1,7 @@
 docker/dev/env/.email.env
+docker/dev/env/.twilio.env
 docker/prod/env/.email.env
+docker/prod/env/.twilio.env
 node_modules
 web/static/
 Pip*

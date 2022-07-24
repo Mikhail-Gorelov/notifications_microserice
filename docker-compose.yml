@@ -81,6 +81,7 @@ services:
       - docker/dev/env/.db.env
       - docker/prod/env/.data.env
       - docker/dev/env/.email.env
+      - docker/dev/env/.twilio.env
     depends_on: [redis]
     restart: unless-stopped
     networks:
