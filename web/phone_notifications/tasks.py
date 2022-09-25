@@ -1,15 +1,7 @@
-from typing import Union
-
-from django.conf import settings
-from django.core.mail import EmailMultiAlternatives
-from django.template import loader
-from django.utils.translation import activate
-import asyncio
-from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
+from django.conf import settings
 from twilio.rest import Client
 
-from main.decorators import smtp_shell
 from src.celery import app
 
 channel_layer = get_channel_layer()

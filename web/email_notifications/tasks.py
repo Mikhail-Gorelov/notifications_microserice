@@ -2,7 +2,6 @@ from typing import Union
 from django.core.mail import EmailMultiAlternatives
 from django.template import loader
 from django.utils.translation import activate
-import asyncio
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
 
