@@ -32,17 +32,27 @@ CELERY_BROKER_TRANSPORT_OPTIONS = {
 # }
 
 CELERY_TASK_DEFAULT_EXCHANGE = "celery"
+generic_exchange = Exchange('generic', type='topic')  # topic, fanout
 
-CELERY_TASK_QUEUES = {
-    "emails": {
-        "binding_key": "emails",
-    },
-    "sms": {
-        "binding_key": "sms",
-    },
-}
+# CELERY_TASK_QUEUES = {
+#     "emails": {
+#         "binding_key": "emails",
+#     },
+#     "sms": {
+#         "binding_key": "sms",
+#     },
+# }
+
+CELERY_TASK_QUEUES = (
+    Queue(
+        name='update_prices_notifications',
+        exchange=generic_exchange,
+        queue_arguments={'x-queue-mode': 'lazy'},
+    ),
+)
 
 CELERY_TASK_ROUTES = {
     'email_sender.tasks.*': {'queue': 'emails'},
     'sms_sender.tasks.*': {'queue': 'sms'},
+    'update_prices': {'queue': 'update_prices_notifications'},
 }
