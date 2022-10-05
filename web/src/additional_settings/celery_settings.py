@@ -32,7 +32,7 @@ CELERY_BROKER_TRANSPORT_OPTIONS = {
 # }
 
 CELERY_TASK_DEFAULT_EXCHANGE = "celery"
-generic_exchange = Exchange('generic', type='topic')  # topic, fanout
+direct_exchange = Exchange('direct', type='topic')  # topic, fanout
 
 # CELERY_TASK_QUEUES = {
 #     "emails": {
@@ -46,7 +46,7 @@ generic_exchange = Exchange('generic', type='topic')  # topic, fanout
 CELERY_TASK_QUEUES = (
     Queue(
         name='update_prices_notifications',
-        exchange=generic_exchange,
+        exchange=direct_exchange,
         queue_arguments={'x-queue-mode': 'lazy'},
     ),
 )

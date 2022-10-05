@@ -84,6 +84,7 @@ services:
     restart: unless-stopped
     networks:
       - separated_network
+      - microservice_network
     extra_hosts:
       - "docker-gateway-host:172.17.0.1"
 
@@ -94,6 +95,9 @@ volumes:
   redis_socket:
 
 networks:
+  default:
+    external:
+      name: web-shop
   microservice_network:
     driver: bridge
     name: local_microservice_network
